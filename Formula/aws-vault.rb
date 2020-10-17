@@ -11,8 +11,7 @@ class AwsVault < Formula
   def install
     flags = "-X main.Version=#{version} -s -w"
 
-    system "go", "build", "-ldflags=#{flags}"
-    bin.install "aws-vault"
+    system "go", "build", *std_go_args, "-ldflags=#{flags}"
 
     zsh_completion.install "contrib/completions/zsh/aws-vault.zsh"
     bash_completion.install "contrib/completions/bash/aws-vault.bash"
